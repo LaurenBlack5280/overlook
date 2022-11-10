@@ -4,11 +4,44 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Overlook</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+  <header>
+    <h1>Overlook</h1>
+  </header>
+  <main>
+    <h2>Welcome User!</h2>
+    <div class="main-container">
+      <div class="card-container">
+        <article class="card">
+          <section class="card-header">
+            <h3>Upcoming Trips</h3>
+          </section>
+          <section class="card-body">
+            <p>
+              <span>New Trip 1!</span>
+              <span>New Trip 2!</span>
+            </p>
+          </section>
+        </article>
+      </div>
+      <div class="card-container">
+        <article class="card">
+          <section class="card-header">
+            <h3>Past Trips</h3>
+          </section>
+          <section class="card-body">
+            <p>
+              <span>Past Trip 1!</span>
+              <span>Past Trip 2!</span>
+            </p>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
