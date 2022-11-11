@@ -1,3 +1,4 @@
+const bookingsData = [
 {
 id: "5fwrgu4i7k55hl6t8",
 userID: 1,
@@ -34,3 +35,5 @@ userID: 2,
 date: "2023/01/24",
 roomNumber: 19
 }
+]
+export default bookingsData
