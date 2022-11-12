@@ -12,6 +12,10 @@ let bookings
     expect(Bookings).to.be.a('function');
   });
 
+  it.skip('should get all bookings', function() {
+    expect().to.deep.equal()
+    expect().to.deep.equal()
+  })
 
   it.skip('should return past bookings', function() {
     expect().to.deep.equal()
