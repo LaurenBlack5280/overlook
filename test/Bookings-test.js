@@ -61,7 +61,7 @@ let bookings, user1, user2, userOne, userTwo
       roomNumber: 22
       }
     ])
-    expect(userTwo.getSingleUserBookings()).to.deep.equal([
+    expect(bookings.getSingleUserBookings(2)).to.deep.equal([
       {
       id: "5fwrgu4i7k55hl6uf",
       userID: 2,

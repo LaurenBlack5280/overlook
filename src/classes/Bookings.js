@@ -3,13 +3,15 @@ class Bookings {
     this.bookingsData = bookingsData
   }
 
-  getSingleUserBookings(num) {
+  getSingleUserBookings(userID) {
+
     // user.getUserID()
     // //for each booking,
-    // let singleUserBookings = this.bookingsData.filter(booking => {
-    //   user.id === userID
-    //
-    // })
+    let singleUserBookings = this.bookingsData.filter(booking => {
+    return booking.userID === userID
+
+    })
+    return singleUserBookings
     //if user.id property equals
     //bookingsData userID property
     //return all bookings for that user
