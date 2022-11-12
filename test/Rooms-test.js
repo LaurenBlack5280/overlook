@@ -17,12 +17,12 @@ let rooms
     expect(rooms.roomsData[1]).to.deep.equal({ number: 2, roomType: "suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 477.38 })
   })
 
-  it('should return information for a single room', function() {
+  it('should return information for a single room by id', function() {
     expect(rooms.getARoom(1)).to.deep.equal(rooms.roomsData[0])
     expect(rooms.getARoom(2)).to.deep.equal(rooms.roomsData[1])
   })
 
-  it('should return room cost', function() {
+  it('should return room cost by room number', function() {
     expect(rooms.getRoomCost(1)).to.equal(358.4)
     expect(rooms.getRoomCost(2)).to.equal(477.38)
   })
