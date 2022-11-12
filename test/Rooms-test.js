@@ -22,8 +22,13 @@ let rooms
     expect(rooms.getARoom(2)).to.deep.equal(rooms.roomsData[1])
   })
 
-  it('should get rooms by type', function() {
-    expect(rooms.getRooms("residential suite")).to.deep.equal([rooms.roomsData[0]])
-    expect(rooms.getRooms("junior suite")).to.deep.equal([rooms.roomsData[5], rooms.roomsData[7]])
+  it('should return room cost', function() {
+    expect(rooms.getRoomCost(1)).to.equal(358.4)
+    expect(rooms.getRoomCost(2)).to.equal(477.38)
   })
+
+  it('should get rooms by type', function() {
+      expect(rooms.getRooms("residential suite")).to.deep.equal([rooms.roomsData[0]])
+    expect(rooms.getRooms("junior suite")).to.deep.equal([rooms.roomsData[5], rooms.roomsData[7]])
+  } )
 })

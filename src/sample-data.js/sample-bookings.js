@@ -36,4 +36,4 @@ date: "2023/01/24",
 roomNumber: 19
 }
 ]
-export default bookingsData
+module.exports = bookingsData
