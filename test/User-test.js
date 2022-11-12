@@ -31,4 +31,15 @@ let userOne, userTwo
     expect(userOne.name).to.equal('Leatha Ullrich');
     expect(userTwo.name).to.equal('Rocio Schuster');
   });
+
+  it('should return user id', function() {
+    expect(userOne.getUserID()).to.equal(1);
+    expect(userTwo.getUserID()).to.equal(2);
+  });
+
+  it('should return user name', function() {
+    expect(userOne.getName()).to.equal('Leatha Ullrich');
+    expect(userTwo.getName()).to.equal('Rocio Schuster');
+  });
+
 });
