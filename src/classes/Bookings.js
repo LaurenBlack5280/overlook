@@ -3,6 +3,18 @@ class Bookings {
     this.bookingsData = bookingsData
   }
 
+  getSingleUserBookings(num) {
+    // user.getUserID()
+    // //for each booking,
+    // let singleUserBookings = this.bookingsData.filter(booking => {
+    //   user.id === userID
+    //
+    // })
+    //if user.id property equals
+    //bookingsData userID property
+    //return all bookings for that user
+
+  }
   /*
   write a func that returns all bookings for that user
     then divides those stays into past
