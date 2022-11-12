@@ -64,4 +64,4 @@ numBeds: 1,
 costPerNight: 261.26
 }
 ]
-export default roomsData
+module.exports = roomsData
