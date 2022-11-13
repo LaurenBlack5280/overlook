@@ -1,5 +1,5 @@
-const getUserApiData =
-fetch(userUrl)
+const getUsersApiData =
+fetch('http://localhost:3001/api/v1/customers/')
 .then(res => {
   console.log('response:', res)
   if(!response.ok){
@@ -40,4 +40,4 @@ fetch('http://localhost:3001/api/v1/bookings/')
   displayError(errorMessage)
 })
 
-export { getUserApiData, getRoomsApiData, getBookingsApiData }
+export { getUsersApiData, getRoomsApiData, getBookingsApiData }
