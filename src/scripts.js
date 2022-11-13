@@ -17,6 +17,7 @@ let userRepo
 let rooms
 let bookings
 let today
+let errorMessage
 
 // promises //
 function getAllData() {
@@ -30,12 +31,44 @@ function getAllData() {
     rooms = new Rooms(rooms)
     bookings = new Bookings(bookings)
     today = Date.now()
-    //displayDashboard()
+    displayDashboard()
   })
 }
 
-// header selectors //
+// selectors //
 const userNameDisplay = document.querySelector('h2')
+const errorDisplay = querySelector('h1')
 
 // event listeners //
 window.addEventListener('load', getAllData())
+
+// helper functions //
+function displayDashboard() {
+  displayUserName()
+  //displayTotalCost()
+  //displayUserBookings()
+}
+
+// DOM manipulation //
+function displayUserName() {
+  userNameDisplay.innerText = `Welcome ${currentUser.getName()}!`
+}
+
+function displayUserBookings() {
+  //change innerText
+  //or change innerHTML of
+  //main container
+}
+
+// function displayTotalCost() {
+//
+// }
+
+function displayError(errorMessage) {
+  errorMessage = 'so sorry, something went wrong'
+  errorDisplay.innerText = `Overlook is ${errorMessage}`
+  //add conditional logic for diff
+  //errorMessage to appear
+  //'Sorry, we can't find any rooms
+  // that match your request
+}

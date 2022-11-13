@@ -31,7 +31,7 @@ fetch('http://localhost:3001/api/v1/bookings/')
 .then(res => {
   console.log('response:', res)
   if(!response.ok){
-    throw new Error(errorMessage)
+    throw new Error(res.statusText)
   }
   return res.json()
 })
