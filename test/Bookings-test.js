@@ -4,7 +4,7 @@ import User from '../src/classes/User.js'
 import bookingsData from '../src/sample-data.js/sample-bookings.js'
 
 describe('Bookings', function() {
-let bookings, user1, user2, userOne, userTwo
+let bookings, user1, user2, userOne, userTwo, today
   beforeEach(() => {
      bookings = new Bookings(bookingsData)
 
@@ -19,6 +19,7 @@ let bookings, user1, user2, userOne, userTwo
 
      userOne = new User(user1)
      userTwo = new User(user2)
+
   })
 
   it('should be a function', function() {
@@ -39,7 +40,7 @@ let bookings, user1, user2, userOne, userTwo
       roomNumber: 20
     })
   })
-//console.log(userOne.getSingleUserBookings())
+
   it('should get all bookings for single user', function() {
     expect(bookings.getSingleUserBookings(1)).to.deep.equal([
       {
@@ -83,9 +84,22 @@ let bookings, user1, user2, userOne, userTwo
     ])
   })
 
-  it.skip('should return past bookings', function() {
-    expect().to.deep.equal()
-    expect().to.deep.equal()
+  it('should return past bookings', function() {
+    expect(bookings.getPastBookings(1)).to.deep.equal([
+      {
+      id: "5fwrgu4i7k55hl6t8",
+      userID: 1,
+      date: "2022/02/05",
+      roomNumber: 12
+      },
+      {
+      id: "5fwrgu4i7k55hl727",
+      userID: 1,
+      date: "2022/11/06",
+      roomNumber: 22
+      }
+    ])
+    expect(bookings.getPastBookings(2)).to.deep.equal([])
   })
 
   it.skip('should return upcoming bookings', function() {
@@ -93,9 +107,9 @@ let bookings, user1, user2, userOne, userTwo
     expect().to.deep.equal()
   })
 
-  it.skip('should calculate total cost of bookings', function() {
-    expect().to.deep.equal()
-    expect().to.deep.equal()
+  it.skip('should calculate total cost of bookings' /* by room number???*/ , function() {
+    expect(bookings.getBookingsTotal()).to.deep.equal()
+    expect(bookings.getBookingsTotal()).to.deep.equal()
   })
 
 })
