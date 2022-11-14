@@ -12,8 +12,10 @@ import Bookings from '../src/classes/Bookings.js'
 //create userRepo class and tests
 
 // global variables //
+let userRepo
 let currentUser
 let users
+let customers
 let rooms
 let bookings
 let today
@@ -23,15 +25,20 @@ let errorMessage
 function getAllData() {
   Promise.all([getUsersApiData, getRoomsApiData, getBookingsApiData])
   .then(data => {
-    users = data[0].users
+    console.log(data)
+    customers = data[0].customers
+    console.log(customers)
     rooms = data[1].rooms
     bookings = data[2].bookings
-    users = new UserRepo(users)
-    currentUser = new User(users[Math.floor(Math.random() * users.length)])
+    customers = users
+    userRepo = new UserRepo(users)
+
+    //currentUser = new User(userRepo[Math.floor(Math.random() * userRepo.length)])
+    //console.log('current user', currentUser)
     rooms = new Rooms(rooms)
     bookings = new Bookings(bookings)
     today = Date.now()
-    displayDashboard()
+    //displayDashboard()
   })
 }
 
@@ -43,22 +50,22 @@ const errorDisplay = document.querySelector('h1')
 window.addEventListener('load', getAllData())
 
 // helper functions //
-function displayDashboard() {
-  displayUserName()
+//function displayDashboard() {
+  // displayUserName()
   //displayTotalCost()
   //displayUserBookings()
-}
+// }
 
 // DOM manipulation //
-function displayUserName() {
-  userNameDisplay.innerText = `Welcome ${currentUser.getName()}!`
-}
+// function displayUserName() {
+//   userNameDisplay.innerText = `Welcome ${currentUser.getName()}!`
+// }
 
-function displayUserBookings() {
-  //change innerText
-  //or change innerHTML of
-  //main container
-}
+// function displayUserBookings() {
+//   //change innerText
+//   //or change innerHTML of
+//   //main container
+// }
 
 // function displayTotalCost() {
 //
