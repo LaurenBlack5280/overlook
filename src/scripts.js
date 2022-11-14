@@ -1,19 +1,19 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import { getUsersApiData, getRoomsApiData, getBookingsApiData } from './apiCalls'
+import UserRepo from '../src/classes/UserRepo.js'
+import User from '../src/classes/User.js'
+import Rooms from '../src/classes/UserRepo.js'
+import Bookings from '../src/classes/Bookings.js'
 //import all classes
 //create userRepo class and tests
 
 // global variables //
 let currentUser
 let users
-let userRepo
 let rooms
 let bookings
 let today
@@ -26,7 +26,7 @@ function getAllData() {
     users = data[0].users
     rooms = data[1].rooms
     bookings = data[2].bookings
-    //userRepo = new userRepo(users)
+    users = new UserRepo(users)
     currentUser = new User(users[Math.floor(Math.random() * users.length)])
     rooms = new Rooms(rooms)
     bookings = new Bookings(bookings)
@@ -37,7 +37,7 @@ function getAllData() {
 
 // selectors //
 const userNameDisplay = document.querySelector('h2')
-const errorDisplay = querySelector('h1')
+const errorDisplay = document.querySelector('h1')
 
 // event listeners //
 window.addEventListener('load', getAllData())
