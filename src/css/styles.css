@@ -4,6 +4,8 @@
 
 body {
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  /* font: 'Fira Sans', sans-serif; */
+  font-family: "Goudy Bookletter 1911", sans-serif;
 }
 
 header {
@@ -11,6 +13,21 @@ header {
 	justify-content: flex-end;
 	align-items: center;
 }
+
+#booking-calendar {
+}
+
+label {
+    display: block;
+    font-size: 1rem;
+    /* font: 1rem 'Fira Sans', sans-serif; */
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
 
 .card {
   display: flex;
