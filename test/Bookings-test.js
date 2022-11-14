@@ -1,10 +1,12 @@
 import { expect } from "chai";
 import Bookings from '../src/classes/Bookings.js'
 import User from '../src/classes/User.js'
+import Rooms from '../src/classes/Rooms.js'
 import bookingsData from '../src/sample-data.js/sample-bookings.js'
+import allRooms from '../src/sample-data.js/more-sample-rooms.js'
 
 describe('Bookings', function() {
-let bookings, user1, user2, userOne, userTwo, today
+let bookings, user1, user2, userOne, userTwo, today, rooms
   beforeEach(() => {
      bookings = new Bookings(bookingsData)
 
@@ -20,6 +22,7 @@ let bookings, user1, user2, userOne, userTwo, today
      userOne = new User(user1)
      userTwo = new User(user2)
 
+     rooms = new Rooms(allRooms)
   })
 
   it('should be a function', function() {
@@ -84,8 +87,9 @@ let bookings, user1, user2, userOne, userTwo, today
     ])
   })
 
-  it('should return past bookings', function() {
-    expect(bookings.getPastBookings(1)).to.deep.equal([
+  it('should contain past bookings', function() {
+  bookings.formerOrLatterBookings(1)
+    expect(bookings.pastBookings).to.deep.equal([
       {
       id: "5fwrgu4i7k55hl6t8",
       userID: 1,
@@ -99,17 +103,50 @@ let bookings, user1, user2, userOne, userTwo, today
       roomNumber: 22
       }
     ])
-    expect(bookings.getPastBookings(2)).to.deep.equal([])
+    bookings.pastBookings = []
+    bookings.formerOrLatterBookings(2)
+    expect(bookings.pastBookings).to.deep.equal([])
   })
 
-  it.skip('should return upcoming bookings', function() {
-    expect().to.deep.equal()
-    expect().to.deep.equal()
+  it('should contain upcoming bookings', function() {
+    bookings.formerOrLatterBookings(1)
+
+    expect(bookings.upcomingBookings).to.deep.equal([
+    {
+    id: "5fwrgu4i7k55hl6x8",
+    userID: 1,
+    date: "2023/01/11",
+    roomNumber: 20
+    }
+  ])
+
+    bookings.upcomingBookings = []
+    bookings.formerOrLatterBookings(2)
+    expect(bookings.upcomingBookings).to.deep.equal([
+      {
+      id: "5fwrgu4i7k55hl6uf",
+      userID: 2,
+      date: "2023/01/09",
+      roomNumber: 18
+      },
+      {
+      id: "5fwrgu4i7k55hl6uy",
+      userID: 2,
+      date: "2023/01/24",
+      roomNumber: 19
+      },
+      {
+      id: "5fwrgu4i7k55hl6uy",
+      userID: 2,
+      date: "2023/01/24",
+      roomNumber: 19
+      }
+    ])
   })
 
-  it.skip('should calculate total cost of bookings' /* by room number???*/ , function() {
-    expect(bookings.getBookingsTotal()).to.deep.equal()
-    expect(bookings.getBookingsTotal()).to.deep.equal()
-  })
+  // it('should calculate total cost of bookings', function() {
+  //   expect(bookings.getBookingsTotal(1)).to.equal(866.35)
+  //   expect(bookings.getBookingsTotal(2)).to.equal(1245.75)
+  // })
 
 })
