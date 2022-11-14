@@ -1,10 +1,12 @@
 import { expect } from "chai";
 import Bookings from '../src/classes/Bookings.js'
 import User from '../src/classes/User.js'
+import Rooms from '../src/classes/Rooms.js'
 import bookingsData from '../src/sample-data.js/sample-bookings.js'
+import allRooms from '../src/sample-data.js/more-sample-rooms.js'
 
 describe('Bookings', function() {
-let bookings, user1, user2, userOne, userTwo, today
+let bookings, user1, user2, userOne, userTwo, today, rooms
   beforeEach(() => {
      bookings = new Bookings(bookingsData)
 
@@ -20,6 +22,7 @@ let bookings, user1, user2, userOne, userTwo, today
      userOne = new User(user1)
      userTwo = new User(user2)
 
+     rooms = new Rooms(allRooms)
   })
 
   it('should be a function', function() {
@@ -141,9 +144,9 @@ let bookings, user1, user2, userOne, userTwo, today
     ])
   })
 
-  it('should calculate total cost of bookings' /* by room number???*/ , function() {
-    expect(bookings.getBookingsTotal(1)).to.deep.equal()
-    expect(bookings.getBookingsTotal(2)).to.deep.equal()
-  })
+  // it('should calculate total cost of bookings', function() {
+  //   expect(bookings.getBookingsTotal(1)).to.equal(866.35)
+  //   expect(bookings.getBookingsTotal(2)).to.equal(1245.75)
+  // })
 
 })

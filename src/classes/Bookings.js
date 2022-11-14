@@ -8,7 +8,6 @@ class Bookings {
 
   getSingleUserBookings(userID) {
     let singleUserBookings = this.bookingsData.filter(booking => booking.userID === userID)
-
     return singleUserBookings
   }
 
@@ -26,12 +25,33 @@ class Bookings {
     return singleUserBookings
   }
 
-  getBookingsTotal(userID) {
-    let singleUserBookings = this.bookingsData.filter(booking =>  booking.userID === userID)
-    return singleUserBookings
+  // getBookingsTotal() {
+  //   this.rooms.getRoomCost(19)
+    // this.singleUserBookings = new Rooms(singleUserBookings)
+    // console.log('hope', this.singleUserBookings)
+    //for each booking number,
+    // get cost per night
+    //sum each cost per night
+    //HOW
+    //after we have each cost
+    //reduce over costs
   }
 
-  }
+  // getBookingsTotal(userID) {
+  //   console.log(rooms.getRoomCost(1))
+  //   let singleUserBookings = this.bookingsData.filter(booking =>  booking.userID === userID)
+  //
+  //   let listOfCosts = singleUserBookings.map(booking => {
+  //     console.log('room number', booking.roomNumber)
+  //     console.log(this.rooms.getRoomCost(booking.roomNumber))
+  //   return
+  //   })
+  //   console.log('result', listOfCosts)
+  //   return listOfCosts
+  //   //return singleUserBookings
+  // }
+
+}
 
   /*
     write a func that returns the cost of

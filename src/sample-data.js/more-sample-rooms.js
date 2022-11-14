@@ -1,4 +1,4 @@
-rooms: [
+const allRooms = [
 {
 number: 1,
 roomType: "residential suite",
@@ -199,3 +199,5 @@ bedSize: "queen",
 numBeds: 1,
 costPerNight: 305.85
 }
+]
+module.exports = allRooms
