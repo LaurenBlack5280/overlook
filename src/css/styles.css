@@ -14,7 +14,16 @@ header {
 	align-items: center;
 }
 
+#submit-button {
+  
+}
+
+#booking-form {
+  /* display: block; */
+}
+
 #booking-calendar {
+  display:block;
 }
 
 label {

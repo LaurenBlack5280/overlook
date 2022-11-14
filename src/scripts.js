@@ -37,7 +37,6 @@ function getAllData() {
     //console.log('current user', currentUser)
     rooms = new Rooms(rooms)
     bookings = new Bookings(bookings)
-    today = Date.now()
     //displayDashboard()
   })
 }
@@ -45,16 +44,36 @@ function getAllData() {
 // selectors //
 const userNameDisplay = document.querySelector('h2')
 const errorDisplay = document.querySelector('h1')
-
+const bookingForm = document.querySelector('#booking-form')
+const bookingCalendar = document.querySelector('#booking-calendar')
+const submitButton = document.querySelector('#submit-button')
 // event listeners //
 window.addEventListener('load', getAllData())
-
+//bookingCalendar.addEventListener('load', displayTodaysDate)
+submitButton.addEventListener('click', selectDate)
 // helper functions //
+function getToday() {
+  today = Date.now()
+  return today
+}
 //function displayDashboard() {
   // displayUserName()
   //displayTotalCost()
   //displayUserBookings()
 // }
+// function displayTodaysDate() {
+//   getToday()
+// }
+//How to set date on calendar input to today?
+  //change innerText
+// select a date from calendar for booking
+function selectRoomByDate(e) {
+  bookingForm.textContent = e.target.value
+
+  //date must be in future
+  //must have available Rooms
+
+}
 
 // DOM manipulation //
 // function displayUserName() {

@@ -13,13 +13,13 @@
   </header>
   <main>
     <h2>Welcome User!</h2>
-    <form>
-      <label for="booking-calendar">Book Your Next Stay:</label>
-
-      <input type="date" id="booking-calendar" name="trip-start"
-           value="2022-11-13"
-           min="2022-11-13" max="2025-12-31">
-    </form>
+    <form class="booking-form">
+      <label>
+        Book Your Next Stay:
+        <input type="date" name="bday" />
+      </label>
+      <p><button id="submit-button">Submit</button></p>
+  </form>
     <div class="main-container">
       <!-- <div class="card-container"> -->
         <article class="card">
