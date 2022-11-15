@@ -77,7 +77,7 @@ renderAvailRooms(availableRooms)
 }
 
 function renderAvailRooms(availableRooms, event) {
-  cardContainer.innerHTML = " "
+  cardContainer.innerHTML = ""
   availableRooms.forEach(room => {
     cardContainer.innerHTML += `
           <article class="card">
