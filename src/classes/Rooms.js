@@ -1,7 +1,6 @@
 class Rooms {
   constructor(roomsData) {
     this.roomsData = roomsData
-
   }
 
   getARoom(num) {
@@ -13,6 +12,7 @@ class Rooms {
     let cost = this.getARoom(num).costPerNight
     return cost
   }
+
 //addbyType to function and variable names
   getRooms(type) {
     let filteredRooms = this.roomsData.filter(room =>  room.roomType === type)

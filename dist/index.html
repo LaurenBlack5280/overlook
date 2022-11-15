@@ -16,12 +16,11 @@
     <form class="booking-form">
       <label>
         Book Your Next Stay:
-        <input type="date" name="bday" />
+        <input class="booking-calendar" type="date" name="booking-calendar" />
+        <p><button id="submit-button">Submit</button></p>
       </label>
-      <p><button id="submit-button">Submit</button></p>
-  </form>
-    <div class="main-container">
-      <!-- <div class="card-container"> -->
+    </form>
+    <div class="card-container">
         <article class="card">
           <section class="card-header">
             <h3>Upcoming Trips</h3>
@@ -33,8 +32,6 @@
             </p>
           </section>
         </article>
-      <!-- </div> -->
-      <div class="card-container">
         <article class="card">
           <section class="card-header">
             <h3>Past Trips</h3>
@@ -47,10 +44,11 @@
           </section>
         </article>
       </div>
-    </div>
+      <div class="avail-rooms hidden">
+
+      </div>
   </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>

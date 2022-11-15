@@ -32,9 +32,6 @@ function getAllData() {
     bookings = data[2].bookings
     customers = users
     userRepo = new UserRepo(users)
-
-    //currentUser = new User(userRepo[Math.floor(Math.random() * userRepo.length)])
-    //console.log('current user', currentUser)
     rooms = new Rooms(rooms)
     bookings = new Bookings(bookings)
     //displayDashboard()
@@ -49,26 +46,23 @@ const bookingCalendar = document.querySelector('#booking-calendar')
 const submitButton = document.querySelector('#submit-button')
 // event listeners //
 window.addEventListener('load', getAllData())
-//bookingCalendar.addEventListener('load', displayTodaysDate)
-submitButton.addEventListener('click', selectDate)
+submitButton.addEventListener('click', selectRoomByDate)
+
 // helper functions //
 function getToday() {
   today = Date.now()
   return today
 }
-//function displayDashboard() {
-  // displayUserName()
-  //displayTotalCost()
-  //displayUserBookings()
-// }
-// function displayTodaysDate() {
-//   getToday()
-// }
-//How to set date on calendar input to today?
-  //change innerText
-// select a date from calendar for booking
-function selectRoomByDate(e) {
-  bookingForm.textContent = e.target.value
+
+function displayDashboard() {
+
+  // displayTotalCost()
+  // displayUserBookings()
+}
+
+
+function selectRoomByDate(date) {
+bookings.getRoomsByDate(date)
 
   //date must be in future
   //must have available Rooms
@@ -93,8 +87,4 @@ function selectRoomByDate(e) {
 function displayError(errorMessage) {
   errorMessage = 'so sorry, something went wrong'
   errorDisplay.innerText = `Overlook is ${errorMessage}`
-  //add conditional logic for diff
-  //errorMessage to appear
-  //'Sorry, we can't find any rooms
-  // that match your request
 }
