@@ -22,7 +22,7 @@ header {
   /* display: block; */
 }
 
-#booking-calendar {
+.booking-calendar {
   display:block;
 }
 
@@ -49,7 +49,7 @@ label {
 	align-content: stretch; */
 }
 .avail-rooms {
-  
+
 }
 .hidden {
   display: none !important;

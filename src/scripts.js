@@ -25,16 +25,16 @@ let errorMessage
 function getAllData() {
   Promise.all([getUsersApiData, getRoomsApiData, getBookingsApiData])
   .then(data => {
-    console.log(data)
     customers = data[0].customers
-    console.log(customers)
     rooms = data[1].rooms
     bookings = data[2].bookings
-    customers = users
-    userRepo = new UserRepo(users)
+    userRepo = new UserRepo(customers)
+    currentUser = new User(customers[0])
     rooms = new Rooms(rooms)
     bookings = new Bookings(bookings)
-    //displayDashboard()
+    console.log('userRepo', userRepo)
+    console.log('user', currentUser);
+    displayDashboard()
   })
 }
 
@@ -42,34 +42,74 @@ function getAllData() {
 const userNameDisplay = document.querySelector('h2')
 const errorDisplay = document.querySelector('h1')
 const bookingForm = document.querySelector('#booking-form')
-const bookingCalendar = document.querySelector('#booking-calendar')
+const bookingCalendar = document.querySelector('.booking-calendar')
 const submitButton = document.querySelector('#submit-button')
+const availRooms = document.querySelector('.avail-rooms')
+const cardContainer = document.querySelector('.card-container')
+
 // event listeners //
 window.addEventListener('load', getAllData())
-submitButton.addEventListener('click', selectRoomByDate)
+submitButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  console.log(bookingCalendar.value);
+  selectRoomByDate(bookingCalendar.value)
+})
 
-// helper functions //
+
+// DOM manipulation //
+
 function getToday() {
   today = Date.now()
   return today
 }
 
 function displayDashboard() {
-
+  userNameDisplay.innerHTML = `Welcome, ${currentUser.name}`
   // displayTotalCost()
   // displayUserBookings()
 }
 
 
 function selectRoomByDate(date) {
-bookings.getRoomsByDate(date)
-
-  //date must be in future
-  //must have available Rooms
-
+  console.log('hello')
+  let availableRooms = bookings.getRoomsByDate(date)
+renderAvailRooms(availableRooms)
 }
 
-// DOM manipulation //
+function renderAvailRooms(availableRooms, event) {
+  cardContainer.innerHTML = " "
+  availableRooms.forEach(room => {
+    cardContainer.innerHTML += `
+          <article class="card">
+            <section class="card-header">
+              <h3>Room Name: ${room.roomType}</h3>
+            </section>
+            <section class="card-body">
+              <p>
+                <span>number: ${room.number} </span>
+                <span>bidet: ${room.bidet} </span>
+                <span>bedSize: ${room.bedSize} </span>
+                <span>numBeds: ${room.numBeds} </span>
+                <span>Price: ${room.costPerNight}</span>
+              </p>
+            </section>
+          </article>`
+        })
+}
+/*
+Create new card for each room
+1. create render card function that will
+  create a new card article for each room
+2.
+*/
+
+function addHidden(element) {
+  element.classList.add("hidden");
+}
+
+function removeHidden(element) {
+  element.classList.remove("hidden");
+}
 // function displayUserName() {
 //   userNameDisplay.innerText = `Welcome ${currentUser.getName()}!`
 // }
