@@ -45,8 +45,9 @@ const bookingForm = document.querySelector('#booking-form')
 const bookingCalendar = document.querySelector('.booking-calendar')
 const submitButton = document.querySelector('#submit-button')
 const availRooms = document.querySelector('.avail-rooms')
-const upcomingBookingsCards = document.querySelector('.upcoming-card-container')
+// const upcomingBookingsCards = document.querySelector('#upcoming-cards-container')
 //const cardContainer = document.querySelector('.card-container')
+const upcomingVisitsContainer = document.querySelector('.upcoming-visits-container')
 
 // event listeners //
 window.addEventListener('load', getAllData())
@@ -73,6 +74,13 @@ function displayDashboard() {
 function displayUserBookings() {
   bookings.formerOrLatterBookings(currentUser.id)
   console.log('hi', bookings.upcomingBookings)
+  //console.log(bookings)
+  bookings.upcomingBookings.forEach(booking => {
+    upcomingVisitsContainer.innerHTML += `
+    <p>You will sleep in room ${booking.roomNumber} on
+    ${booking.date}</p>
+    `
+  })
 }
 
 function selectRoomByDate(date) {
