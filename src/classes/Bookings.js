@@ -41,12 +41,12 @@ class Bookings {
 //  then get cost costPerNight
 // add to total
 
-  // getTotalRoomCosts(roomsArray) {
-  //   let counter = 0
-  //   roomsArray.forEach((room, index) => {
-  //     counter += room.getCost(index)
-  //   })
-  // }
+  getTotalRoomCosts(roomsArray) {
+    let counter = 0
+    roomsArray.forEach((room, index) => {
+      counter += roomsArray.getCost(index)
+    })
+  }
   /*
     write a func that returns the cost of
     all bookings for that user

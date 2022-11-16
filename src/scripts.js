@@ -32,8 +32,6 @@ function getAllData() {
     currentUser = new User(customers[0])
     rooms = new Rooms(rooms)
     bookings = new Bookings(bookings)
-    console.log('userRepo', userRepo)
-    console.log('user', currentUser);
     displayDashboard()
   })
 }
@@ -44,17 +42,18 @@ const errorDisplay = document.querySelector('h1')
 const bookingForm = document.querySelector('#booking-form')
 const bookingCalendar = document.querySelector('.booking-calendar')
 const submitButton = document.querySelector('#submit-button')
-const availRooms = document.querySelector('.avail-rooms')
+const availRooms = document.querySelector('.avail-rooms-container')
 
 const upcomingVisitsContainer = document.querySelector('.upcoming-visits-container')
 const pastVisitsContainer = document.querySelector('.past-visits-container')
+const yourTotal = document.querySelector('.your-total')
 
 // event listeners //
 window.addEventListener('load', getAllData())
 submitButton.addEventListener('click', function(event) {
   event.preventDefault()
   console.log(bookingCalendar.value);
-  selectRoomByDate(bookingCalendar.value)
+  console.log(selectRoomByDate(bookingCalendar.value))
 })
 
 
@@ -67,14 +66,12 @@ function getToday() {
 
 function displayDashboard() {
   userNameDisplay.innerHTML = `Welcome, ${currentUser.name}`
-  // displayTotalCost()
   displayUserBookings()
+  displayTotalCost()
 }
 
 function displayUserBookings() {
   bookings.formerOrLatterBookings(currentUser.id)
-  console.log('hi', bookings.upcomingBookings)
-  //console.log(bookings)
   bookings.upcomingBookings.forEach(booking => {
     upcomingVisitsContainer.innerHTML += `
     <p>You will sleep in room ${booking.roomNumber} on
@@ -89,59 +86,62 @@ function displayUserBookings() {
   })
 }
 
+
+// function getTotalCost() {
+//   let userBookings = bookings.getSingleUserBookings(currentUser.id)
+//   console.log('user bookings', userBookings)
+//   let totalCost = bookings.getTotalRoomCosts(userBookings)
+// }
+
+  // let total = 0
+  // let filteredRooms = rooms.filter(room => {
+  //      return room.number
+  //     // === userBookings.roomNumber
+  // })
+  // console.log(filteredRooms)
+  // return filteredRooms
+  // userBookings.forEach(booking => {
+  //   console.log(rooms.getRoomCost(booking.roomNumber))
+  //   console.log(booking.roomNumber)
+  //   console.log('rooms', rooms)
+     //total += room.costPerNight
+  // })
+  // //console.log('total', total)
+  // return total
+//}
+
+function displayTotalCost() {
+  //getTotalCost()
+}
+  //for each booking,
+  //  get room number
+
+  // let total = userBookings.reduce((previous, currentRoom) => {
+  //   return previous += currentRoom.costPerNight
+  // }, 0)
+  // console.log(total)
+  // return total
+  // let total = rooms.getTotalCost()
+  // console.log(total)
+
+
 function selectRoomByDate(date) {
-  console.log('hello')
+  console.log(date)
   let availableRooms = bookings.getRoomsByDate(date)
+  console.log('follow the data', availableRooms)
 renderAvailRooms(availableRooms, event)
 }
 
-function renderAvailRooms(availableRooms, event) {
-  //availRooms.innerHTML = ""
+function renderAvailRooms(availableRooms) {
   availableRooms.forEach(room => {
-    availRooms.innerHTML += `
-          <article class="card">
-            <section class="card-header">
-              <h3>Room Name: ${room.roomType}</h3>
-            </section>
-            <section class="card-body">
-              <p>
-                <span>number: ${room.number} </span>
-                <span>bidet: ${room.bidet} </span>
-                <span>bedSize: ${room.bedSize} </span>
-                <span>numBeds: ${room.numBeds} </span>
-                <span>Price: ${room.costPerNight}</span>
-              </p>
-            </section>
-          </article>`
-        })
-}
-/*
-Create new card for each room
-1. create render card function that will
-  create a new card article for each room
-2.
-*/
-
-function addHidden(element) {
-  element.classList.add("hidden");
+    console.log('room:', room )
+      availRooms.innerHTML += `
+      <p>Check out room number ${booking.roomNumber} </p>
+      `
+    })
 }
 
-function removeHidden(element) {
-  element.classList.remove("hidden");
-}
-// function displayUserName() {
-//   userNameDisplay.innerText = `Welcome ${currentUser.getName()}!`
-// }
 
-// function displayUserBookings() {
-//   //change innerText
-//   //or change innerHTML of
-//   //main container
-// }
-
-// function displayTotalCost() {
-//
-// }
 
 function displayError(errorMessage) {
   errorMessage = 'so sorry, something went wrong'

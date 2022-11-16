@@ -144,9 +144,5 @@ let bookings, user1, user2, userOne, userTwo, today, rooms
     ])
   })
 
-  // it('should calculate total cost of bookings', function() {
-  //   expect(bookings.getBookingsTotal(1)).to.equal(866.35)
-  //   expect(bookings.getBookingsTotal(2)).to.equal(1245.75)
-  // })
 
 })
