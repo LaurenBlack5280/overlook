@@ -45,9 +45,9 @@ const bookingForm = document.querySelector('#booking-form')
 const bookingCalendar = document.querySelector('.booking-calendar')
 const submitButton = document.querySelector('#submit-button')
 const availRooms = document.querySelector('.avail-rooms')
-// const upcomingBookingsCards = document.querySelector('#upcoming-cards-container')
-//const cardContainer = document.querySelector('.card-container')
+
 const upcomingVisitsContainer = document.querySelector('.upcoming-visits-container')
+const pastVisitsContainer = document.querySelector('.past-visits-container')
 
 // event listeners //
 window.addEventListener('load', getAllData())
@@ -78,6 +78,12 @@ function displayUserBookings() {
   bookings.upcomingBookings.forEach(booking => {
     upcomingVisitsContainer.innerHTML += `
     <p>You will sleep in room ${booking.roomNumber} on
+    ${booking.date}</p>
+    `
+  })
+  bookings.pastBookings.forEach(booking => {
+    pastVisitsContainer.innerHTML += `
+    <p>You slept in room ${booking.roomNumber} on
     ${booking.date}</p>
     `
   })
