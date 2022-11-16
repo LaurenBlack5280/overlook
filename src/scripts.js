@@ -45,7 +45,8 @@ const bookingForm = document.querySelector('#booking-form')
 const bookingCalendar = document.querySelector('.booking-calendar')
 const submitButton = document.querySelector('#submit-button')
 const availRooms = document.querySelector('.avail-rooms')
-const cardContainer = document.querySelector('.card-container')
+const upcomingBookingsCards = document.querySelector('.upcoming-card-container')
+//const cardContainer = document.querySelector('.card-container')
 
 // event listeners //
 window.addEventListener('load', getAllData())
@@ -66,20 +67,24 @@ function getToday() {
 function displayDashboard() {
   userNameDisplay.innerHTML = `Welcome, ${currentUser.name}`
   // displayTotalCost()
-  // displayUserBookings()
+  displayUserBookings()
 }
 
+function displayUserBookings() {
+  bookings.formerOrLatterBookings(currentUser.id)
+  console.log('hi', bookings.upcomingBookings)
+}
 
 function selectRoomByDate(date) {
   console.log('hello')
   let availableRooms = bookings.getRoomsByDate(date)
-renderAvailRooms(availableRooms)
+renderAvailRooms(availableRooms, event)
 }
 
 function renderAvailRooms(availableRooms, event) {
-  cardContainer.innerHTML = ""
+  //availRooms.innerHTML = ""
   availableRooms.forEach(room => {
-    cardContainer.innerHTML += `
+    availRooms.innerHTML += `
           <article class="card">
             <section class="card-header">
               <h3>Room Name: ${room.roomType}</h3>

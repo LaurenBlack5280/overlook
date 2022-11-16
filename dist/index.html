@@ -21,9 +21,21 @@
         <button id="submit-button">Submit</button>
       </label>
     </form>
-    <section class="upcoming-bookings container">
-    <h3>Upcoming Visits</h3>
-    <!-- <div class="card-container"> -->
+    <section class="upcoming-bookings-container" id="upcoming-bookings-container">
+      <h3>Upcoming Visits</h3>
+      <div class="upcoming-cards-container" id="upcoming-cards-container">
+        <article class="card">
+          <section class="card-body">
+            <p>
+              <span>Room Number: </span>
+              <span>Date: </span>
+            </p>
+          </section>
+        </article>
+      </div>
+      </section>
+      <!-- <section class="past-bookings container"> -->
+        <!-- <h3>Past Visits</h3>
         <article class="card">
           <section class="card-header">
             <h4>room type</h4>
@@ -39,8 +51,8 @@
           </section>
         </article>
       </section>
-      <section class="past-bookings container">
-        <h3>Past Visits</h3>
+      <section class="available-rooms">
+        <h3>Available Rooms:</h3>
         <article class="card">
           <section class="card-header">
             <h4>room type</h4>
@@ -56,21 +68,8 @@
           </section>
         </article>
       </section>
-        <article class="card">
-          <section class="card-header">
-            <h3>Available Rooms:</h3>
           </section>
-          <section class="card-body">
-            <p>
-              <span>room name: </span>
-              <span>number: </span>
-              <span>bidet: </span>
-              <span>bedSize: </span>
-              <span>numBeds: </span>
-              <span>Price: </span>
-            </p>
-          </section>
-        </article>`
+        </article> -->
       <!-- </div> -->
     </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
