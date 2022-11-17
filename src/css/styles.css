@@ -1,6 +1,6 @@
-* {
+/* * {
   outline: 3px solid silver;
-}
+} */
 
 body {
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
@@ -14,13 +14,21 @@ header {
 	align-items: center;
 }
 
-#booking-calendar {
+#submit-button {
+
+}
+
+#booking-form {
+  /* display: block; */
+}
+
+.booking-calendar {
+  display:block;
 }
 
 label {
     display: block;
     font-size: 1rem;
-    /* font: 1rem 'Fira Sans', sans-serif; */
 }
 
 input,
@@ -28,16 +36,26 @@ label {
     margin: .4rem 0;
 }
 
-
 .card {
   display: flex;
   flex-direction: column;
 }
-/* .card-container {
-	display: flex;
+
+.container{
+
+}
+
+.card-container {
+	/* display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-items: center;
-	align-content: stretch;
-} */
+	align-content: stretch; */
+}
+.avail-rooms {
+
+}
+.hidden {
+  display: none !important;
+}
