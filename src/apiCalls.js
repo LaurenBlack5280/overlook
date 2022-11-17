@@ -54,14 +54,10 @@ function postData(booking) {
     }
     return res.json()
     })
-    // .then(() => {
-    //   //getAllData()
-    // })
     .catch(err => {
       console.log('error:', err)
       //displayError(errorMessage)
     })
-    //.catch(err => console.log('To err is human', err))
   return postedData
 }
 
