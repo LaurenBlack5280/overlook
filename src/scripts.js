@@ -13,6 +13,7 @@ import Bookings from '../src/classes/Bookings.js'
 
 // global variables //
 let userRepo
+let customerID
 let currentUser
 let users
 let customers
@@ -29,11 +30,14 @@ function getAllData() {
     customers = data[0].customers
     rooms = data[1].rooms
     bookings = data[2].bookings
+    let loggedInUser = customers.find(customer => customer.id === parseInt(customerID))
+    console.log(loggedInUser)
     userRepo = new UserRepo(customers)
-    currentUser = new User(customers[0])
+    currentUser = new User(loggedInUser)
     rooms = new Rooms(rooms)
     bookings = new Bookings(bookings)
     displayDashboard()
+    submitButton.disabled = false
   })
 
 }
@@ -44,22 +48,59 @@ const errorDisplay = document.querySelector('h1')
 const bookingForm = document.querySelector('#booking-form')
 const bookingCalendar = document.querySelector('.booking-calendar')
 const submitButton = document.querySelector('#submit-button')
-const availRooms = document.querySelector('.avail-rooms-container')
+let availRooms = document.querySelector('.avail-rooms-container')
 
 const upcomingVisitsContainer = document.querySelector('.upcoming-visits-container')
 const pastVisitsContainer = document.querySelector('.past-visits-container')
 const yourTotal = document.querySelector('.your-total')
+const loginUsername = document.querySelector('.login-username')
+const loginPassword = document.querySelector('.login-password')
+const loginSubmitButton = document.querySelector('#login-submit-button')
+const bookVisitButton = document.querySelector("#book-visit-button")
 
 // event listeners //
-window.addEventListener('load', getAllData())
+//window.addEventListener('load', getAllData())
 submitButton.addEventListener('click', function(event) {
   event.preventDefault()
   console.log(bookingCalendar.value);
   console.log(selectRoomByDate(bookingCalendar.value))
 })
-
+loginSubmitButton.addEventListener('click', handleLogin)
+bookVisitButton.addEventListener('click', handleBooking)
 
 // DOM manipulation //
+/*
+{ "userID": 48, "date": "2019/09/23", "roomNumber": 4 }
+*/
+function handleBooking() {
+  let selectedRoom
+  let selectedDate = bookingCalendar.value.replaceAll('-', '/')
+  let radioButtons = document.querySelectorAll('.radio-buttons')
+ radioButtons.forEach(button => {
+   if(button.checked) {
+     selectedRoom = button.name
+   }
+ })
+ let selectedBooking = {
+   userID: parseInt(customerID),
+   date: selectedDate,
+   roomNumber: parseInt(selectedRoom)
+ }
+ postBookingApiData(selectedBooking)
+ .then(res => {
+   bookings.bookingsData.push(res.newBooking)
+   displayDashboard()
+   selectRoomByDate(bookingCalendar.value)
+ })
+}
+
+function handleLogin() {
+  if(loginPassword.value !== 'overlook2021') {
+    return
+  }
+  customerID = loginUsername.value.substring(8, 10)
+  getAllData()
+}
 
 function getToday() {
   today = Date.now()
@@ -138,12 +179,17 @@ return availableRooms
 }
 
 function renderAvailRooms(availableRooms) {
+  availRooms.innerHTML = ""
   availableRooms.forEach(room => {
-    console.log('room:', room )
+
       availRooms.innerHTML += `
-      <p>Check out room number ${room.number}, it's
-        our ${room.roomType}, has ${room.numBeds} bed(s)
-       </p>
+      <div>
+        <input type="radio" class="radio-buttons" id="room-number-${room.number}" name="${room.number}" value="room-number-${room.number}" />
+        <label for="room-number-${room.number}">
+          Check out room number ${room.number}! It's
+          our ${room.roomType} and has ${room.numBeds} bed(s)
+        </label>
+      </div>
       `
     })
 }
@@ -152,7 +198,7 @@ function filterRoomsByDate(date) {
 let editedDate = date.replaceAll("-", "/")
 let  unAvailableRooms = []
     bookings.bookingsData.forEach(booking => {
-    console.log('fingers crossed', booking.date == editedDate);
+
     if(booking.date == editedDate) {
       console.log('bookings', bookings)
       unAvailableRooms.push(booking)

@@ -11,6 +11,17 @@
   <header>
     <h1>Overlook</h1>
   </header>
+  <div class="login">
+    <label>
+      Username:
+      <input class="login-username" type="text"/>
+    </label>
+    <label>
+      Password:
+      <input class="login-password" type="password"/>
+    </label>
+    <button id="login-submit-button">Submit</button>
+  </div>
   <main>
     <h2>Welcome User!</h2>
     <form class="booking-form">
@@ -18,7 +29,7 @@
         Book Your Next Stay:
         <input class="booking-calendar" type="date" min="2022-11-14"
         max="2025-11-14" name="booking-calendar" required/>
-        <button id="submit-button">Submit</button>
+        <button id="submit-button" disabled="true">Submit</button>
       </label>
     </form>
     <section class="upcoming-bookings-container">
@@ -34,11 +45,13 @@
     <section class="avail-bookings-container">
       <h3>Available Rooms</h3>
       <div class="avail-rooms-container">
+        <h4>Pick a date, then choose from the
+        list below:</h4>
       </div>
-    </section>
-    <div class="your-total">
-      <h4>Your Total:</h4>
+    <div>
+      <button type="submit" id="book-visit-button">Book Your Next Visit</button>
     </div>
+  </section>
     </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>

@@ -41,10 +41,10 @@ fetch('http://localhost:3001/api/v1/bookings/')
 })
 
 const postBookingApiData =
-function postData(user) {
+function postData(booking) {
   let postedData = fetch('http://localhost:3001/api/v1/bookings/', {
     method: 'POST',
-    body: JSON.stringify(user),
+    body: JSON.stringify(booking),
     headers: { 'content-type': 'application/json'}
   })
   .then(res => {
@@ -54,9 +54,9 @@ function postData(user) {
     }
     return res.json()
     })
-    .then(() => {
-      getAllData()
-    })
+    // .then(() => {
+    //   //getAllData()
+    // })
     .catch(err => {
       console.log('error:', err)
       //displayError(errorMessage)
