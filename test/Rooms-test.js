@@ -32,9 +32,4 @@ let rooms
     expect(rooms.getRooms("junior suite")).to.deep.equal([rooms.roomsData[5], rooms.roomsData[7]])
   } )
 
-
-    // it('should calculate total cost of rooms', function() {
-    //   expect(rooms.getBookingsTotal()).to.equal(866.35)
-    //   expect(rooms.getBookingsTotal()).to.equal(1245.75)
-    // })
 })
